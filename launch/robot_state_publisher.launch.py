@@ -21,7 +21,7 @@ def launch_setup(context, *args, **kwargs):
     package_description = "fastbot_description"
 
     robot_desc_path = os.path.join(
-        get_package_share_directory(package_description), "models/urdf/", robot_file
+        get_package_share_directory(package_description), "onshape/", robot_file
     )
     # Load XACRO file with ARGUMENTS
     robot_desc = xacro.process_file(
@@ -49,7 +49,7 @@ def launch_setup(context, *args, **kwargs):
 
 def generate_launch_description():
     robot_name_arg = DeclareLaunchArgument("robot_name", default_value="fastbot")
-    robot_file_arg = DeclareLaunchArgument("robot_file", default_value="fastbot_multi_sim.xacro")
+    robot_file_arg = DeclareLaunchArgument("robot_file", default_value="robot.xacro")
 
     return LaunchDescription(
         [robot_name_arg, robot_file_arg, OpaqueFunction(function=launch_setup)]
